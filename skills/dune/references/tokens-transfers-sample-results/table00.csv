@@ -1,0 +1,22 @@
+column_name,data_type
+unique_key,varchar
+blockchain,varchar
+block_month,date
+block_date,date
+block_time,timestamp(3) with time zone
+block_number,bigint
+tx_hash,varbinary
+evt_index,bigint
+trace_address,array(bigint)
+token_standard,varchar
+tx_from,varbinary
+tx_to,varbinary
+tx_index,bigint
+from,varbinary
+to,varbinary
+contract_address,varbinary
+symbol,varchar
+amount_raw,uint256
+amount,double
+price_usd,double
+amount_usd,double
