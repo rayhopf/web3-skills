@@ -109,6 +109,7 @@ results_df = dune.run_query_dataframe(query)
 - **Narrow scope first**: Begin with specific filters, expand as needed
 - **Check references**: See `references/` for table-specific documentation and column details
 
-## References
+## Table References
 
 - [tokens.transfers](references/tokens-transfers.md) - Token transfer events across chains
+- [labels.ens](references/labels-ens.md) - Ethereum Name Service (ENS) domain labels

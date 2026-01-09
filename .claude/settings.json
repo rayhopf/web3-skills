@@ -7,6 +7,10 @@
           {
             "type": "command",
             "command": ".claude/hooks/validate-skills.sh"
+          },
+          {
+            "type": "command",
+            "command": ".venv/bin/python .claude/hooks/validate-skills.py"
           }
         ]
       }
