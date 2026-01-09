@@ -31,24 +31,31 @@ Query to view sample records and understand the data structure:
 ```sql
 SELECT *
 FROM labels.ens
-LIMIT 10;
+LIMIT 5;
 ```
 
 **Result:** [labels-ens-sample-results/table01.csv](labels-ens-sample-results/table01.csv)
 
 ## Common Queries
 
-### Resolve Address to ENS Name
-
-Query to find ENS names for specific addresses:
+Check data distribution across blockchains
 
 ```sql
-SELECT
-  address,
-  name
+SELECT 
+  blockchain,
+  COUNT(*) as ens_label_count,
+  MIN(created_at) as earliest_label,
+  MAX(created_at) as newest_label,
+  COUNT(DISTINCT address) as unique_addresses,
+  COUNT(DISTINCT name) as unique_names,
+  COUNT(DISTINCT category) as unique_categories,
+  COUNT(DISTINCT contributor) as unique_contributors,
+  COUNT(DISTINCT source) as unique_sources,
+  COUNT(DISTINCT model_name) as unique_model_names,
+  COUNT(DISTINCT label_type) as unique_label_types
 FROM labels.ens
-WHERE address = 0x123... -- Replace with target address
-LIMIT 10;
+GROUP BY blockchain
+ORDER BY ens_label_count DESC;
 ```
 
 **Result:** [labels-ens-sample-results/table02.csv](labels-ens-sample-results/table02.csv)

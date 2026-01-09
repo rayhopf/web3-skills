@@ -1,0 +1,11 @@
+column_name,data_type
+blockchain,varchar
+address,varbinary
+name,varchar
+category,varchar
+contributor,varchar
+source,varchar
+created_at,date
+updated_at,timestamp(3) with time zone
+model_name,varchar
+label_type,varchar
