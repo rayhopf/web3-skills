@@ -1,3 +1,8 @@
+---
+name: dune
+description: Query and analyze blockchain data using Dune Analytics Python SDK. Supports multi-chain data analysis with SQL queries.
+---
+
 # Dune Analytics
 
 AI agent skill for querying blockchain data using Dune Analytics Python SDK.

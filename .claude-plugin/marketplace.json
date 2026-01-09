@@ -1,0 +1,22 @@
+{
+  "name": "web3-skills",
+  "owner": {
+    "name": "rayhopf",
+    "email": "rayhopf@example.com"
+  },
+  "metadata": {
+    "description": "Web3 and blockchain data analysis skills",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "web3-skills",
+      "description": "Collection of Web3 and blockchain analysis skills",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/dune"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# Development dependencies for web3-skills
+# Install with: pip install -r requirements-dev.txt
+
+# Agent Skills reference library for validation
+git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref

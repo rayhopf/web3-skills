@@ -3,12 +3,7 @@ __pycache__/
 .idea/
 .vscode/
 
-.claude
-
 temp/
-
-pyproject.toml
-uv.lock
 
 .venv/
 .python-version
