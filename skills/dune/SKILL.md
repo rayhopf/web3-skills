@@ -17,7 +17,7 @@ AI agent skill for querying blockchain data using Dune Analytics Python SDK.
 
 ### Installation
 ```bash
-pip install dune-client
+pip install dune-client python-dotenv
 ```
 
 ### Authentication
@@ -39,6 +39,10 @@ Execute existing Dune query by query_id:
 ```python
 from dune_client.client import DuneClient
 from dune_client.query import QueryBase
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize client (reads DUNE_API_KEY from env)
 dune = DuneClient()
