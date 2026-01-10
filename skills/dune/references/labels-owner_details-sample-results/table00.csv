@@ -1,0 +1,16 @@
+column_name,data_type
+name,varchar
+owner_key,varchar
+website,varchar
+dune_team,varchar
+project_documentation,varchar
+project_github_url,varchar
+social,varchar
+primary_category,varchar
+category_tags,array(varchar)
+country_name,varchar
+description,varchar
+created_at,timestamp(3) with time zone
+created_by,varchar
+updated_at,timestamp(3) with time zone
+updated_by,varchar
