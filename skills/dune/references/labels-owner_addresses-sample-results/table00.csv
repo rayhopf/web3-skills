@@ -1,0 +1,19 @@
+column_name,data_type
+address,varbinary
+blockchain,varchar
+owner_key,varchar
+custody_owner,varchar
+account_owner,varchar
+contract_name,varchar
+contract_version,varchar
+eoa,varchar
+factory_contract,varchar
+source,varchar
+identifying_transaction,varchar
+algorithm_name,varchar
+source_website,varchar
+source_evidence,varchar
+created_at,timestamp(3) with time zone
+created_by,varchar
+updated_at,timestamp(3) with time zone
+updated_by,varchar

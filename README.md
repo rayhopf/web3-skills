@@ -29,6 +29,11 @@ pip install -r requirements-dev.txt
 /plugin install web3-skills@web3-skills
 ```
 
+**remove skill**
+```
+/plugin marketplace remove web3-skills
+```
+
 ## Validation
 
 ### Automatic Validation (Post Hook)

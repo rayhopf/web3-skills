@@ -1,0 +1,6 @@
+address,blockchain,owner_key,custody_owner,account_owner,contract_name,contract_version,eoa,factory_contract,source,identifying_transaction,algorithm_name,source_website,source_evidence,created_at,created_by,updated_at,updated_by
+0x7de79be6e28a5b1af319ecbef429f4bcdcc401ab,polygon,gnosis_safe,Gnosis Safe,,GnosisSafeL2_v1_3_0,,,,,,,,,2023-05-11 09:22:40.013 UTC,krishhh,,
+0xa00653d2438305e73dc19227739bb5dc2791369d,polygon,gnosis_safe,Gnosis Safe,,GnosisSafeL2_v1_3_0,,,,,,,,,2023-05-11 09:22:40.013 UTC,krishhh,,
+0x56f2ba7ec1c199b9e30b37818eca2d1081590231,polygon,gnosis_safe,Gnosis Safe,,GnosisSafeL2_v1_3_0,,,,,,,,,2023-05-11 09:22:40.013 UTC,krishhh,,
+0xa82ca7e3ab29575dbbc40b412f4c6864bac124f7,polygon,gnosis_safe,Gnosis Safe,,GnosisSafeL2_v1_3_0,,,,,,,,,2023-05-11 09:22:40.013 UTC,krishhh,,
+0x5176eea3951a38b5c772e531c5d685225c5445fa,polygon,gnosis_safe,Gnosis Safe,,GnosisSafeL2_v1_3_0,,,,,,,,,2023-05-11 09:22:40.013 UTC,krishhh,,

@@ -104,12 +104,20 @@ results_df = dune.run_query_dataframe(query)
 
 ## SQL Best Practices
 
+- **ALWAYS check references FIRST**: Before writing SQL for any table, check the `references/` directory for table-specific documentation. This provides accurate column names, data types, and example queries.
 - **Filter by time (when available)**: For tables with time columns like `block_time`, add date range filters to improve performance (e.g., `WHERE block_time >= DATE '2024-01-01'` or `WHERE block_time >= NOW() - INTERVAL '7' DAY`)
 - **Use LIMIT**: Start with small limits when exploring data
 - **Narrow scope first**: Begin with specific filters, expand as needed
-- **Check references**: See `references/` for table-specific documentation and column details
 
 ## Table References
 
+**IMPORTANT**: Before writing SQL queries for any table, always check its reference documentation in the `references/` directory. These files contain:
+- Accurate column names and data types
+- Table schemas and descriptions
+- Example queries and best practices
+- Performance optimization tips
+
+Available references:
 - [tokens.transfers](references/tokens-transfers.md) - Token transfer events across chains
 - [labels.ens](references/labels-ens.md) - Ethereum Name Service (ENS) domain labels
+- [labels.owner_addresses](references/labels-owner_addresses.md) - Address ownership and custody information across 47+ blockchains
