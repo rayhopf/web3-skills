@@ -20,6 +20,11 @@ source .venv/bin/activate
 pip install -r requirements-dev.txt
 ```
 
+**install this skill**
+```bash
+/plugin marketplace add rayhopf/web3-skills
+```
+
 ## Validation
 
 ### Automatic Validation (Post Hook)
