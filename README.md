@@ -21,8 +21,12 @@ pip install -r requirements-dev.txt
 ```
 
 **install this skill**
-```bash
+```
 /plugin marketplace add rayhopf/web3-skills
+```
+
+```
+/plugin install web3-skills@web3-skills
 ```
 
 ## Validation

@@ -21,15 +21,15 @@ pip install dune-client
 ```
 
 ### Authentication
-Set environment variable:
-```bash
-export DUNE_API_KEY="your_api_key_here"
-```
 
-Or create a `.env` file:
+**IMPORTANT**: Always set your DUNE_API_KEY in a `.env` file. Never hardcode it in your Python code.
+
+Create a `.env` file in your project root:
 ```
 DUNE_API_KEY=your_api_key_here
 ```
+
+The DuneClient will automatically read from your environment - no need to pass the key in your Python code.
 
 ## Usage
 
