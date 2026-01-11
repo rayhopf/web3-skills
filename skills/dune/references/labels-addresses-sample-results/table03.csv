@@ -1,0 +1,21 @@
+category,label_count,blockchains,unique_addresses,unique_names,unique_contributors
+dex,1.728573975e+09,52,3.53504809e+08,567545,6
+contracts,4.4558852e+07,13,4.1740986e+07,61076,3
+nft,1.8324968e+07,18,1.2711606e+07,9977,4
+op_transfers,6.545285e+06,1,6.545285e+06,1,1
+infrastructure,5.188511e+06,12,4.863123e+06,119,5
+quests,1.886803e+06,1,1.427464e+06,3,1
+bridge,1.341616e+06,8,1.050337e+06,234,7
+social,1.285961e+06,2,1.231242e+06,1.087469e+06,3
+op_governance,869376,1,741448,7,1
+op_perpetual,544916,1,544916,3,1
+safe,358157,1,358157,10,1
+likely bots,350029,9,332081,12,1
+tornado_cash,286125,7,278687,4,1
+op_traders,172008,1,172008,2,1
+dao,91998,6,91998,433,2
+op_attestationstation,19207,1,19145,1,1
+institution,19144,7,4848,4848,8
+balancer_v2_pool,8596,8,8003,4966,1
+cex users,3738,2,3317,313,1
+balancer_v3_pool,3253,4,3253,1286,1

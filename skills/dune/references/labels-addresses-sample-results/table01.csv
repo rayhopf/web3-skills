@@ -1,0 +1,6 @@
+blockchain,address,name,category,contributor,source,created_at,updated_at,model_name,label_type
+base,0x62ec5c3d3520b116ba253094dcb538ecf0d8a7ec,Sparse Trader,dex,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 04:07:37.639 UTC,trader_frequencies,usage
+base,0x26c8bf2c86582e210fac48f9cca03715cd29c286,Sparse Trader,dex,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 04:07:37.639 UTC,trader_frequencies,usage
+base,0xe7319616c86588527123f89aa7317f8c7df410d9,Sparse Trader,dex,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 04:07:37.639 UTC,trader_frequencies,usage
+base,0x97f3b87a6b451f17c768105b1c2cee48dffc7709,Sparse Trader,dex,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 04:07:37.639 UTC,trader_frequencies,usage
+base,0x0d172cfbe7ed090900886287303e09a4a286485b,Sparse Trader,dex,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 04:07:37.639 UTC,trader_frequencies,usage

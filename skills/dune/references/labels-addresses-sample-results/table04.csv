@@ -1,0 +1,11 @@
+blockchain,address,name,category,label_type,contributor,source,created_at,updated_at
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,Fiat-backed stablecoin,infrastructure,identifier,hildobby,static,2023-03-02 00:00:00.000 UTC,2026-01-11 04:04:24.684 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,DEX Aggregator Trader,dex,persona,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 03:56:07.044 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,Sparse Trader,dex,usage,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 04:07:37.639 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,pssssssshao.eth,social,identifier,0xRob,query,2022-10-06 00:00:00.000 UTC,2026-01-11 03:57:10.971 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,3 years old DEX trader,dex,usage,gentrexha,query,2022-12-15 00:00:00.000 UTC,2026-01-11 04:06:15.780 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,DEX Trader,dex,persona,gentrexha,query,2022-12-14 00:00:00.000 UTC,2026-01-11 03:56:49.111 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,Tether: Tether_USD,contracts,identifier,soispoke,query,2022-09-26 00:00:00.000 UTC,2026-01-11 03:55:40.958 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,Number of DEXs traded on: 2,dex,usage,gentrexha,query,2022-12-15 00:00:00.000 UTC,2026-01-11 04:06:24.339 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,<=$400 avg. DEX trade value,dex,usage,gentrexha,query,2022-12-15 00:00:00.000 UTC,2026-01-11 03:49:38.068 UTC
+ethereum,0xdac17f958d2ee523a2206206994597c13d831ec7,"Uniswap, Paraswap User",dex,persona,gentrexha,query,2022-12-21 00:00:00.000 UTC,2026-01-11 04:07:48.613 UTC
