@@ -1,0 +1,12 @@
+column_name,data_type
+block_time,timestamp(3)
+block_date,date
+block_height,bigint
+block_hash,varbinary
+tx_id,varbinary
+index,bigint
+value,double
+address,varchar
+type,varchar
+script_asm,varchar
+script_hex,varbinary

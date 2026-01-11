@@ -128,6 +128,8 @@ Purpose-driven guides for common blockchain data analysis tasks:
 - Performance optimization tips
 
 Available references:
+- [bitcoin.inputs](references/bitcoin-inputs.md) - Bitcoin transaction inputs spending previous outputs with coinbase data
+- [bitcoin.outputs](references/bitcoin-outputs.md) - Bitcoin transaction outputs (UTXOs) with block and script data
 - [dex.trades](references/dex-trades.md) - Decentralized exchange trades across 40+ blockchains and protocols
 - [tokens.transfers](references/tokens-transfers.md) - Token transfer events across chains
 - [labels.ens](references/labels-ens.md) - Ethereum Name Service (ENS) domain labels (EVM chains only, excludes Bitcoin)
