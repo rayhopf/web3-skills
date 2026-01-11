@@ -124,7 +124,6 @@ results_df = dune.run_query_dataframe(query)
 Available references:
 - [dex.trades](references/dex-trades.md) - Decentralized exchange trades across 40+ blockchains and protocols
 - [tokens.transfers](references/tokens-transfers.md) - Token transfer events across chains
-- [labels.addresses](references/labels-addresses.md) - Human-readable labels for blockchain addresses across multiple chains
 - [labels.ens](references/labels-ens.md) - Ethereum Name Service (ENS) domain labels
 - [labels.owner_addresses](references/labels-owner_addresses.md) - Address ownership and custody information across 47+ blockchains
 - [labels.owner_details](references/labels-owner_details.md) - Project and entity metadata with categories, links, and verification status
