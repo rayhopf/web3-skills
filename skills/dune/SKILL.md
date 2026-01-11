@@ -113,6 +113,12 @@ results_df = dune.run_query_dataframe(query)
 - **Use LIMIT**: Start with small limits when exploring data
 - **Narrow scope first**: Begin with specific filters, expand as needed
 
+## Usage Guides
+
+Purpose-driven guides for common blockchain data analysis tasks:
+
+- [Bitcoin Addresses and Entities](references/bitcoin-address-label.md) - Label and categorize bitcoin addresses
+
 ## Table References
 
 **IMPORTANT**: Before writing SQL queries for any table, always check its reference documentation in the `references/` directory. These files contain:
