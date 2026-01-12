@@ -8,44 +8,60 @@ Bitcoin address labels help identify exchanges, entities, and notable addresses 
 
 ## Usage
 
-### Method 1: Run by Query ID (Recommended)
+### Method 1: Use as Subquery (Recommended)
 
-Execute the existing query to get the latest labeled addresses:
+**⚠️ IMPORTANT:** This query contains 54,111+ rows. Downloading all rows costs significant download credits.
+
+**Best practice:** Reference this query in your own SQL instead of downloading it directly:
 
 ```python
 from dune_client.client import DuneClient
-from dune_client.query import QueryBase
 from dotenv import load_dotenv
 
 load_dotenv()
 dune = DuneClient()
 
-# Run the Bitcoin address labels query (uses execution credits)
-query = QueryBase(query_id=6509358)
-results = dune.run_query(query)
+# ✅ GOOD: Check count first
+count_sql = "SELECT COUNT(*) as total FROM query_6509358"
+count = dune.run_sql(query_sql=count_sql)
+print(f"Total labels: {count.result.rows[0]['total']}")
 
-# Or get cached results if available (only re-executes if cache is older than max_age_hours)
-# This uses credits only if the cached result is too old
-results = dune.get_latest_result(6509358, max_age_hours=24)
+# ✅ GOOD: Query specific labels with filters and limits
+lookup_sql = """
+SELECT address, label
+FROM query_6509358
+WHERE label = 'Binance'
+LIMIT 100
+"""
+results = dune.run_sql(query_sql=lookup_sql)
+
+# ❌ BAD: Don't download all 54,111 rows (costs many download credits)
+# query = QueryBase(query_id=6509358)
+# results = dune.run_query(query)  # DON'T DO THIS
 ```
 
 **Query URL:** https://dune.com/queries/6509358
 
-### Method 2: Use as Subquery
+### Method 2: Join with Other Tables
 
-Reference this query in your own custom SQL:
+Use this query to enrich your analysis by joining with transactions or other data:
 
 ```python
+# Join labels with Bitcoin transactions to identify exchanges involved
 sql = """
 SELECT
   t.tx_hash,
   t.from_address,
   t.to_address,
-  labels.label as from_label
+  from_labels.label as from_label,
+  to_labels.label as to_label
 FROM bitcoin.transactions t
-LEFT JOIN query_6509358 labels
-  ON t.from_address = labels.address
+LEFT JOIN query_6509358 from_labels
+  ON t.from_address = from_labels.address
+LEFT JOIN query_6509358 to_labels
+  ON t.to_address = to_labels.address
 WHERE t.block_time >= NOW() - INTERVAL '7' DAY
+  AND (from_labels.label IS NOT NULL OR to_labels.label IS NOT NULL)
 LIMIT 100
 """
 

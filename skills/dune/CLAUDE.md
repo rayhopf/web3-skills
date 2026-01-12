@@ -317,6 +317,32 @@ rm fetch_queries_script.py
 
 ## Best Practices
 
+### ⚠️ Download Credits Warning
+
+**CRITICAL:** When creating reference documentation, be mindful of download credits:
+
+- `run_query_csv()` and `get_latest_result()` both cost **download credits** when downloading results
+- For large queries (>10,000 rows), downloads can be expensive
+- **Best practice for development:**
+  1. First check row count: `SELECT COUNT(*) FROM table`
+  2. Use `LIMIT` when fetching sample data (e.g., `LIMIT 5` for table01.csv)
+  3. For large tables, only download aggregated statistics, not raw data
+  4. Consider using `sample_count` parameter to limit rows downloaded
+
+```python
+# ❌ BAD: Downloads entire large table (costs many download credits)
+results = dune.run_query_csv(query.base)
+
+# ✅ GOOD: Limit sample data
+sample_sql = "SELECT * FROM bitcoin.inputs LIMIT 5"
+results = dune.run_sql(query_sql=sample_sql)
+
+# ✅ GOOD: Check count first
+count_sql = "SELECT COUNT(*) FROM labels.owner_details"
+count = dune.run_sql(query_sql=count_sql)
+# If count is small (<1000), then safe to download
+```
+
 ### Query Organization with Tags
 
 When creating queries for reference documentation, **always add tags** to organize them in your Dune account:
@@ -392,4 +418,5 @@ This reference was created following these exact steps:
 - Save CSV with `write(results.data.getvalue())` in binary mode (`"wb"`)
 - Each script run creates/updates Dune queries in your account
 - Consider API rate limits and execution credits when running multiple queries
+- **⚠️ IMPORTANT:** Download credits are consumed when fetching results. Always use `LIMIT` for sample data and aggregate large datasets instead of downloading raw rows
 - Optionally archive queries with `dune.archive_query()` after data is fetched to keep your account organized

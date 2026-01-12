@@ -155,13 +155,53 @@ results_df = dune.run_query_dataframe(query)
 - ✅ Re-running queries with different parameters
 
 ### Use `get_latest_result()` for:
-- ✅ Getting cached query results when available (saves credits)
+- ✅ Getting cached query results when available (saves execution credits)
 - ✅ Automatically re-executing if cache is too old (controlled by `max_age_hours`)
 - ✅ Best for queries that don't need real-time data
+
+**⚠️ IMPORTANT - Download Credits:**
+`get_latest_result()` and `run_query()` both cost **download credits** when retrieving large datasets. For large queries:
+- **DO NOT** download entire result sets
+- **Instead:** Reference the query in your own SQL (`FROM query_xxxxx`)
+- **Best practice:**
+  1. First count rows: `SELECT COUNT(*) FROM query_xxxxx`
+  2. If small (<1000 rows), safe to download with `get_latest_result()`
+  3. If large, use as subquery with `LIMIT`, filters, or aggregations
+  4. Return only statistics/aggregated data instead of raw rows
+
+```python
+# ❌ BAD: Downloads 50,000+ rows (costs many download credits)
+results = dune.get_latest_result(6509358)
+
+# ✅ GOOD: Check size first
+count_sql = "SELECT COUNT(*) as total FROM query_6509358"
+count = dune.run_sql(query_sql=count_sql)
+
+# ✅ GOOD: Use as subquery with filters and limits
+filtered_sql = """
+SELECT address, label
+FROM query_6509358
+WHERE label = 'Binance'
+LIMIT 100
+"""
+results = dune.run_sql(query_sql=filtered_sql)
+
+# ✅ GOOD: Aggregate instead of downloading raw data
+stats_sql = """
+SELECT
+  label,
+  COUNT(*) as address_count
+FROM query_6509358
+GROUP BY label
+ORDER BY address_count DESC
+"""
+results = dune.run_sql(query_sql=stats_sql)
+```
 
 ## SQL Best Practices
 
 - **ALWAYS check references FIRST**: Before writing SQL for any table, check the `references/` directory for table-specific documentation. This provides accurate column names, data types, and example queries.
+- **⚠️ Avoid downloading large datasets**: Downloading query results costs download credits. Always count rows first, use `LIMIT`, or aggregate data before downloading. Reference large queries as subqueries (`FROM query_xxxxx`) instead of downloading all rows.
 - **Filter by time (when available)**: For tables with time columns like `block_time`, add date range filters to improve performance (e.g., `WHERE block_time >= DATE '2024-01-01'` or `WHERE block_time >= NOW() - INTERVAL '7' DAY`)
 - **Use LIMIT**: Start with small limits when exploring data
 - **Narrow scope first**: Begin with specific filters, expand as needed
