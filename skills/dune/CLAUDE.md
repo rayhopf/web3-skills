@@ -45,6 +45,9 @@ def main():
     output_dir = Path("skills/dune/references/TABLE_NAME-sample-results")
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Tags to organize queries created by skill development
+    SKILL_TAGS = ["web3-skills", "reference-data", "table_name"]
+
     # Query 1: Get table schema
     print("Fetching schema for schema.table_name...")
     schema_sql = """
@@ -60,6 +63,11 @@ def main():
     schema_query = dune.create_query(
         name="table_name schema",
         query_sql=schema_sql
+    )
+    # Add tags to organize this query
+    dune.update_query(
+        query_id=schema_query.base.query_id,
+        tags=SKILL_TAGS
     )
     schema_results = dune.run_query_csv(schema_query.base)
     with open(output_dir / "table00.csv", "wb") as f:
@@ -77,6 +85,11 @@ def main():
     sample_query = dune.create_query(
         name="table_name sample data",
         query_sql=sample_sql
+    )
+    # Add tags to organize this query
+    dune.update_query(
+        query_id=sample_query.base.query_id,
+        tags=SKILL_TAGS
     )
     sample_results = dune.run_query_csv(sample_query.base)
     with open(output_dir / "table01.csv", "wb") as f:
@@ -126,6 +139,9 @@ def main():
     output_dir = Path("skills/dune/references/TABLE_NAME-sample-results")
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Tags to organize queries created by skill development
+    SKILL_TAGS = ["web3-skills", "reference-data", "table_name"]
+
     queries = [
         {
             "name": "Query description",
@@ -147,6 +163,11 @@ LIMIT 20;
             query = dune.create_query(
                 name=f"table_name - {query_info['name']}",
                 query_sql=query_info['sql']
+            )
+            # Add tags to organize this query
+            dune.update_query(
+                query_id=query.base.query_id,
+                tags=SKILL_TAGS
             )
             results = dune.run_query_csv(query.base)
 
@@ -296,6 +317,30 @@ rm fetch_queries_script.py
 
 ## Best Practices
 
+### Query Organization with Tags
+
+When creating queries for reference documentation, **always add tags** to organize them in your Dune account:
+
+```python
+# Define consistent tags for all reference queries
+SKILL_TAGS = ["web3-skills", "reference-data", "table_name"]
+
+# After creating a query, immediately tag it
+query = dune.create_query(name="...", query_sql="...")
+dune.update_query(query_id=query.base.query_id, tags=SKILL_TAGS)
+```
+
+**Tag naming conventions:**
+- `web3-skills` - Identifies queries created by this skill project
+- `reference-data` - Marks queries used for generating reference documentation
+- `table_name` - Specific table being documented (e.g., `bitcoin-inputs`, `dex-trades`)
+
+**Optional cleanup:** After fetching all data, you can optionally archive queries to keep your account clean:
+```python
+# Archive query after data is fetched
+dune.archive_query(query.base.query_id)
+```
+
 ### Tips Section
 - Start with most important usage tips
 - Include performance optimization advice (time filtering for transaction tables)
@@ -325,22 +370,26 @@ This reference was created following these exact steps:
 
 1. Created `fetch_owner_details_schema.py` to fetch schema and sample data automatically
 2. Ran script: `python fetch_owner_details_schema.py` (generated table00.csv and table01.csv)
-3. Created `fetch_owner_details_queries.py` with 7 use case queries
+3. Created `fetch_owner_details_queries.py` with 7 use case queries and **tagged all queries** with `["web3-skills", "reference-data", "owner_details"]`
 4. Ran script: `python fetch_owner_details_queries.py` (generated table02-08.csv)
 5. Created `labels-owner_details.md` with complete documentation
 6. Updated `SKILL.md` to include the new reference
 7. Deleted temporary Python scripts
+8. (Optional) Archived tagged queries in Dune to keep account clean
 
 **Result:** Complete reference with:
 - Schema documentation (table00.csv - auto-fetched from information_schema.columns)
 - Sample data (table01.csv - auto-fetched with SELECT * LIMIT 5)
 - 7 common use cases with CSV results (table02-08.csv)
+- All queries properly tagged and organized in Dune account
 
 ## Notes
 
 - Always use `.env` file for `DUNE_API_KEY` (never hardcode)
 - Use `python-dotenv` to load environment variables
 - Run queries with `dune.create_query()` then `.run_query_csv(query.base)`
+- **Always tag queries** with `["web3-skills", "reference-data", "table_name"]` using `dune.update_query()` after creation
 - Save CSV with `write(results.data.getvalue())` in binary mode (`"wb"`)
 - Each script run creates/updates Dune queries in your account
 - Consider API rate limits and execution credits when running multiple queries
+- Optionally archive queries with `dune.archive_query()` after data is fetched to keep your account organized
