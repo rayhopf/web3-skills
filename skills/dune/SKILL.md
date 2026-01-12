@@ -49,11 +49,12 @@ load_dotenv()
 # Initialize client (reads DUNE_API_KEY from env)
 dune = DuneClient()
 
-# Run existing query
+# Run existing query (uses execution credits)
 query = QueryBase(query_id=1215383)
 results = dune.run_query(query)
 
-# Or get latest cached results (free, no execution credits)
+# Or get cached results (only uses credits if cache is older than max_age_hours)
+# If results exist and are fresh, no credits used. If too old, automatically re-executes.
 results = dune.get_latest_result(1215383, max_age_hours=8)
 ```
 
@@ -152,7 +153,11 @@ results_df = dune.run_query_dataframe(query)
 ### Use `run_query()` with query_id for:
 - ✅ Executing existing saved queries
 - ✅ Re-running queries with different parameters
-- ✅ Getting cached results (with `get_latest_result()`)
+
+### Use `get_latest_result()` for:
+- ✅ Getting cached query results when available (saves credits)
+- ✅ Automatically re-executing if cache is too old (controlled by `max_age_hours`)
+- ✅ Best for queries that don't need real-time data
 
 ## SQL Best Practices
 
