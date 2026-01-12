@@ -33,6 +33,8 @@ The DuneClient will automatically read from your environment - no need to pass t
 
 ## Usage
 
+**Important:** For ad-hoc data queries, use `run_sql()` to avoid creating saved queries in your Dune account. Only use `create_query()` when you need parameterized queries or want to save queries for reuse.
+
 ### Run Query by ID
 Execute existing Dune query by query_id:
 
@@ -70,7 +72,30 @@ query = QueryBase(
 results = dune.run_query(query)
 ```
 
-### Create and Run Custom Query
+### Run Custom SQL Query (Without Saving)
+**Recommended for ad-hoc queries** - Executes SQL without creating saved queries in your Dune account:
+
+```python
+sql = """
+SELECT
+  blockchain,
+  COUNT(*) as transfer_count
+FROM tokens.transfers
+WHERE block_time >= NOW() - INTERVAL '7' DAY
+GROUP BY blockchain
+ORDER BY transfer_count DESC
+LIMIT 10
+"""
+
+# Execute SQL directly (no saved query created)
+results = dune.run_sql(query_sql=sql)
+```
+
+**Note:** `run_sql()` does not support parameterized queries. If you need parameters, use the saved query approach below.
+
+### Create and Run Saved Query (With Parameters)
+**Use only when you need parameterized queries:**
+
 ```python
 sql = """
 SELECT
@@ -83,7 +108,7 @@ ORDER BY transfer_count DESC
 LIMIT {{Limit}}
 """
 
-# Create new query
+# This creates a saved query in your Dune account
 query = dune.create_query(
     name="Token Transfers by Chain",
     query_sql=sql,
@@ -96,6 +121,10 @@ results = dune.run_query(query.base)
 
 ### Output Formats
 ```python
+# For run_sql() - JSON format only
+results = dune.run_sql(query_sql=sql)
+
+# For saved queries - multiple formats available:
 # JSON (default)
 results = dune.run_query(query)
 
@@ -105,6 +134,25 @@ results_csv = dune.run_query_csv(query)
 # Pandas DataFrame (requires pandas installed)
 results_df = dune.run_query_dataframe(query)
 ```
+
+## When to Use Each Query Method
+
+### Use `run_sql()` for:
+- ✅ Ad-hoc data queries and exploration
+- ✅ One-time analysis
+- ✅ Simple queries without parameters
+- ✅ **Recommended default for most use cases**
+
+### Use `create_query()` + `run_query()` for:
+- ✅ Parameterized queries (with `{{Parameter}}` syntax)
+- ✅ Queries you want to save and reuse
+- ✅ Queries you want to share with others
+- ✅ Building dashboards or reference materials
+
+### Use `run_query()` with query_id for:
+- ✅ Executing existing saved queries
+- ✅ Re-running queries with different parameters
+- ✅ Getting cached results (with `get_latest_result()`)
 
 ## SQL Best Practices
 

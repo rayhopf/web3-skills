@@ -2,6 +2,8 @@
 
 This guide documents the process for creating new table reference documentation in `skills/dune/references/`.
 
+**Note for Developers:** This guide uses `create_query()` to fetch data, which creates saved queries in your Dune account. This is intentional and acceptable when building reference materials. End users should use `run_sql()` for ad-hoc queries to avoid cluttering their accounts (see SKILL.md for usage).
+
 ## Overview
 
 Table references provide comprehensive documentation for Dune Analytics tables, including:
