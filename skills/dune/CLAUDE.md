@@ -31,13 +31,9 @@ Fetch schema and sample data for labels.owner_details table from Dune Analytics.
 import os
 from pathlib import Path
 from dune_client.client import DuneClient
-from dotenv import load_dotenv
 
 
 def main():
-    # Load environment variables from .env file
-    load_dotenv()
-
     # Initialize Dune client (reads DUNE_API_KEY from env)
     dune = DuneClient()
 
@@ -129,11 +125,9 @@ Fetch all common use case query results for table from Dune Analytics.
 import os
 from pathlib import Path
 from dune_client.client import DuneClient
-from dotenv import load_dotenv
 
 
 def main():
-    load_dotenv()
     dune = DuneClient()
 
     output_dir = Path("skills/dune/references/TABLE_NAME-sample-results")
@@ -411,8 +405,7 @@ This reference was created following these exact steps:
 
 ## Notes
 
-- Always use `.env` file for `DUNE_API_KEY` (never hardcode)
-- Use `python-dotenv` to load environment variables
+- Always set `DUNE_API_KEY` in your shell environment (never hardcode)
 - Run queries with `dune.create_query()` then `.run_query_csv(query.base)`
 - **Always tag queries** with `["web3-skills", "reference-data", "table_name"]` using `dune.update_query()` after creation
 - Save CSV with `write(results.data.getvalue())` in binary mode (`"wb"`)

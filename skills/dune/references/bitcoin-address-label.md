@@ -16,9 +16,7 @@ Bitcoin address labels help identify exchanges, entities, and notable addresses 
 
 ```python
 from dune_client.client import DuneClient
-from dotenv import load_dotenv
 
-load_dotenv()
 dune = DuneClient()
 
 # ✅ GOOD: Check count first
